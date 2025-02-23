@@ -104,8 +104,8 @@
             <h1 class="text-4xl font-bold flex-1 text-center" data-zh style="display:none;">欢迎来到我的数据科学作品集</h1>
         </div>
         <div class="mt-4 flex justify-center space-x-4">
-            <button onclick="toggleLanguage('en')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
-            <button onclick="toggleLanguage('zh')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
+            <button onclick="toggleLanguage('en'); updateProjects('en');" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
+            <button onclick="toggleLanguage('zh'); updateProjects('zh');" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
         </div>
     </header>
 
@@ -170,27 +170,34 @@
     
     <script>
         const projects = [
-            { name: "Crime in California", img: "https://robm-data.github.io/portfolio/Placeholder1.png", link: "https://robm-data.github.io/california-crime-analysis/index.html", skills: ["Python", "Tableau"] },
-            { name: "Restaurant Recommender", img: "https://robm-data.github.io/portfolio/Placeholder2.png", link: "#", skills: ["Python", "Machine Learning"] },
-            { name: "Insurance Fraud Detection", img: "https://robm-data.github.io/portfolio/Placeholder3.png", link: "#", skills: ["NLP", "Deep Learning"] },
-            { name: "Causes of Suicide", img: "https://robm-data.github.io/portfolio/Placeholder4.png", link: "#", skills: ["Machine Learning", "SQL"] }
+            { name_en: "Crime in California", name_zh: "加利福尼亚州犯罪", img: "https://robm-data.github.io/portfolio/Placeholder1.png", link: "https://robm-data.github.io/california-crime-analysis/index.html", skills: ["Python", "Tableau"] },
+            { name_en: "Restaurant Recommender", name_zh: "餐厅推荐系统", img: "https://robm-data.github.io/portfolio/Placeholder2.png", link: "#", skills: ["Python", "Machine Learning"] },
+            { name_en: "Insurance Fraud Detection", name_zh: "保险欺诈检测", img: "https://robm-data.github.io/portfolio/Placeholder3.png", link: "#", skills: ["NLP", "Deep Learning"] },
+            { name_en: "Causes of Suicide", name_zh: "自杀原因分析", img: "https://robm-data.github.io/portfolio/Placeholder4.png", link: "#", skills: ["Machine Learning", "SQL"] }
         ];
         
-        const projectContainer = document.getElementById("projects");
-        projects.forEach(project => {
-            const projectCard = document.createElement("div");
-            projectCard.className = "bg-white rounded-lg shadow overflow-hidden project-card";
-            projectCard.setAttribute("data-skills", project.skills.join(", "));
-            projectCard.innerHTML = `
-                <img src="${project.img}" alt="${project.name}" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">${project.name}</h3>
-                    <p class="text-sm text-gray-600">Skills: ${project.skills.join(", ")}</p>
-                    <a href="${project.link}" class="text-blue-600 hover:underline">View Project</a>
-                </div>
-            `;
-            projectContainer.appendChild(projectCard);
-        });
+        function updateProjects(language) {
+            const projectContainer = document.getElementById("projects");
+            projectContainer.innerHTML = ""; // Clear existing projects
+        
+            projects.forEach(project => {
+                const projectCard = document.createElement("div");
+                projectCard.className = "bg-white rounded-lg shadow overflow-hidden project-card";
+                projectCard.setAttribute("data-skills", project.skills.join(", "));
+                projectCard.innerHTML = `
+                    <img src="${project.img}" alt="${language === 'zh' ? project.name_zh : project.name_en}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">${language === 'zh' ? project.name_zh : project.name_en}</h3>
+                        <p class="text-sm text-gray-600">${language === 'zh' ? "技能" : "Skills"}: ${project.skills.join(", ")}</p>
+                        <a href="${project.link}" class="text-blue-600 hover:underline">${language === 'zh' ? "查看项目" : "View Project"}</a>
+                    </div>
+                `;
+                projectContainer.appendChild(projectCard);
+            });
+        }
+        
+        // Default to English
+        updateProjects('en');
     </script>
 
     <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
