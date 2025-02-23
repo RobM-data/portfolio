@@ -13,6 +13,7 @@
             color: white;
             transition: left 0.3s ease-in-out;
             z-index: 9999;
+            padding-top: 60px;
         }
         
         /* Sidebar Open */
@@ -27,8 +28,8 @@
             top: 10px;
             font-size: 24px;
             padding: 10px;
-            background: black; /* Default color when sidebar is closed */
-            color: white;
+            background: none; /* Default color when sidebar is closed */
+            color: black;
             border: none;
             cursor: pointer;
             z-index: 10000; /* Ensures it stays on top */
@@ -37,8 +38,8 @@
         
         /* Change Button Color When Sidebar is Open */
         .sidebar.active + .open-btn {
-            background: white; /* Changes to white when sidebar is open */
-            color: black;
+            background: none; /* Changes to white when sidebar is open */
+            color: white;
         }
     </style>
 
