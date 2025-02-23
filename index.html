@@ -42,6 +42,17 @@
             background: none; /* Changes to white when sidebar is open */
             color: white;
         }
+
+        /* Hide sub-links by default */
+        .dropdown-menu {
+            display: none;
+            padding-left: 20px; /* Indent sub-links */
+        }
+        
+        /* Optional: Add smooth transition */
+        .dropdown-menu li {
+            padding: 5px 0;
+        }
     </style>
 
     
@@ -193,7 +204,13 @@
         function toggleDropdown(event) {
             event.preventDefault();
             let submenu = event.target.nextElementSibling;
-            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            
+            // Toggle display property
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
         }
     </script>
 </body>
