@@ -14,6 +14,18 @@
                 el.style.display = lang === 'zh' ? 'block' : 'none';
             });
         }
+        
+        function filterProjects() {
+            const searchTerm = document.getElementById("skill-search").value.toLowerCase();
+            document.querySelectorAll(".project-card").forEach(card => {
+                const skills = card.getAttribute("data-skills").toLowerCase();
+                if (skills.includes(searchTerm) || searchTerm === "") {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
     </script>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -26,32 +38,6 @@
         <button onclick="toggleLanguage('zh')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
     </header>
     
-    <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>About Me</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">关于我</h2>
-        <p class="text-gray-700" data-en>I am a passionate data scientist with expertise in machine learning, data visualization, and statistical analysis. Here, you can explore my latest projects and see what I’ve been working on.</p>
-        <p class="text-gray-700" data-zh style="display:none;">我是一名充满热情的数据科学家，擅长机器学习、数据可视化和统计分析。在这里，您可以探索我的最新项目，并了解我的工作内容。</p>
-    </section>
-    
-    <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Skills</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">技能</h2>
-        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <li class="bg-white p-4 rounded-lg shadow">Python</li>
-            <li class="bg-white p-4 rounded-lg shadow">Machine Learning</li>
-            <li class="bg-white p-4 rounded-lg shadow">Data Visualization</li>
-            <li class="bg-white p-4 rounded-lg shadow">SQL</li>
-            <li class="bg-white p-4 rounded-lg shadow">Deep Learning</li>
-            <li class="bg-white p-4 rounded-lg shadow">NLP</li>
-        </ul>
-    </section>
-    
-    <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Projects</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects"></div>
-    </section>
-    
     <section class="max-w-4xl mx-auto p-6 text-center">
         <h2 class="text-2xl font-semibold mb-4" data-en>Connect with Me</h2>
         <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">联系我</h2>
@@ -62,22 +48,37 @@
         </div>
     </section>
     
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Search by Skill</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">按技能搜索</h2>
+        <input type="text" id="skill-search" onkeyup="filterProjects()" placeholder="Search projects by skill..." class="w-full p-2 border rounded">
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Projects</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects">
+        </div>
+    </section>
+    
     <script>
         const projects = [
-            { name: "Customer Churn Prediction", img: "https://via.placeholder.com/400", link: "#" },
-            { name: "Stock Market Analysis", img: "https://via.placeholder.com/400", link: "#" },
-            { name: "Sentiment Analysis", img: "https://via.placeholder.com/400", link: "#" },
-            { name: "Fraud Detection", img: "https://via.placeholder.com/400", link: "#" }
+            { name: "California Crime Analysis", img: "https://via.placeholder.com/400", link: "https://www.robm-data.github.io/california-crime-analysis/index", skills: ["Python", "Tableau"] },
+            { name: "Stock Market Analysis", img: "https://via.placeholder.com/400", link: "#", skills: ["Python", "Machine Learning"] },
+            { name: "Sentiment Analysis", img: "https://via.placeholder.com/400", link: "#", skills: ["NLP", "Deep Learning"] },
+            { name: "Fraud Detection", img: "https://via.placeholder.com/400", link: "#", skills: ["Machine Learning", "SQL"] }
         ];
         
         const projectContainer = document.getElementById("projects");
         projects.forEach(project => {
             const projectCard = document.createElement("div");
-            projectCard.className = "bg-white rounded-lg shadow overflow-hidden";
+            projectCard.className = "bg-white rounded-lg shadow overflow-hidden project-card";
+            projectCard.setAttribute("data-skills", project.skills.join(", "));
             projectCard.innerHTML = `
                 <img src="${project.img}" alt="${project.name}" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-lg font-semibold">${project.name}</h3>
+                    <p class="text-sm text-gray-600">Skills: ${project.skills.join(", ")}</p>
                     <a href="${project.link}" class="text-blue-600 hover:underline">View Project</a>
                 </div>
             `;
