@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>My Data Science Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function toggleLanguage(lang) {
@@ -18,69 +18,71 @@
 </head>
 <body class="bg-gray-100 text-gray-900">
     <header class="bg-blue-600 text-white py-6 text-center">
-        <h1 class="text-4xl font-bold" data-en id="project-title">Project Title</h1>
-        <h1 class="text-4xl font-bold" data-zh id="project-title-zh" style="display:none;">项目标题</h1>
+        <h1 class="text-4xl font-bold" data-en>Welcome to My Data Science Portfolio</h1>
+        <h1 class="text-4xl font-bold" data-zh style="display:none;">欢迎来到我的数据科学作品集</h1>
+        <p class="mt-2 text-lg" data-en>Showcasing my work, skills, and projects</p>
+        <p class="mt-2 text-lg" data-zh style="display:none;">展示我的工作、技能和项目</p>
         <button onclick="toggleLanguage('en')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
         <button onclick="toggleLanguage('zh')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
     </header>
     
     <section class="max-w-4xl mx-auto p-6">
-        <img id="project-image" src="https://via.placeholder.com/800x400" alt="Project Image" class="w-full rounded-lg shadow">
+        <h2 class="text-2xl font-semibold mb-4" data-en>About Me</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">关于我</h2>
+        <p class="text-gray-700" data-en>I am a passionate data scientist with expertise in machine learning, data visualization, and statistical analysis. Here, you can explore my latest projects and see what I’ve been working on.</p>
+        <p class="text-gray-700" data-zh style="display:none;">我是一名充满热情的数据科学家，擅长机器学习、数据可视化和统计分析。在这里，您可以探索我的最新项目，并了解我的工作内容。</p>
     </section>
     
     <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Project Overview</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目概述</h2>
-        <p id="project-description" class="text-gray-700" data-en>Detailed description of the project goes here...</p>
-        <p id="project-description-zh" class="text-gray-700" data-zh style="display:none;">项目的详细描述将在这里展示...</p>
-    </section>
-    
-    <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Technologies Used</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">使用的技术</h2>
-        <ul id="project-tech" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Skills</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">技能</h2>
+        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <li class="bg-white p-4 rounded-lg shadow">Python</li>
-            <li class="bg-white p-4 rounded-lg shadow">Tableau</li>
+            <li class="bg-white p-4 rounded-lg shadow">Machine Learning</li>
+            <li class="bg-white p-4 rounded-lg shadow">Data Visualization</li>
+            <li class="bg-white p-4 rounded-lg shadow">SQL</li>
+            <li class="bg-white p-4 rounded-lg shadow">Deep Learning</li>
+            <li class="bg-white p-4 rounded-lg shadow">NLP</li>
         </ul>
     </section>
     
     <section class="max-w-4xl mx-auto p-6">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Project Links</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目链接</h2>
-        <ul class="space-y-2">
-            <li><a id="data-collection-link" href="#" class="text-blue-600 hover:underline" data-en>Data Collection & Cleaning</a>
-                <a id="data-collection-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">数据收集与清理</a></li>
-            <li><a id="eda-link" href="#" class="text-blue-600 hover:underline" data-en>Exploratory Data Analysis (EDA)</a>
-                <a id="eda-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">探索性数据分析（EDA）</a></li>
-            <li><a id="dashboard-link" href="#" class="text-blue-600 hover:underline" data-en>Dashboard & Visualizations</a>
-                <a id="dashboard-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">仪表板和可视化</a></li>
-        </ul>
+        <h2 class="text-2xl font-semibold mb-4" data-en>Projects</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects"></div>
     </section>
     
     <section class="max-w-4xl mx-auto p-6 text-center">
-        <a href="index.html" class="text-blue-600 hover:underline" data-en>Back to Portfolio</a>
-        <a href="index.html" class="text-blue-600 hover:underline" data-zh style="display:none;">返回作品集</a>
-    </section>
-    
-    <section class="max-w-4xl mx-auto p-6 text-center">
-        <h2 class="text-2xl font-semibold mb-4" data-en>Visit the Full Project</h2>
-        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">访问完整项目</h2>
-        <a href="https://www.robm-data.github.io/california-crime-analysis/index" class="text-blue-600 hover:underline" target="_blank">California Crime Analysis</a>
+        <h2 class="text-2xl font-semibold mb-4" data-en>Connect with Me</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">联系我</h2>
+        <div class="flex justify-center space-x-4">
+            <a href="#" class="text-blue-600 hover:underline">LinkedIn</a>
+            <a href="#" class="text-blue-600 hover:underline">GitHub</a>
+            <a href="#" class="text-blue-600 hover:underline">Twitter</a>
+        </div>
     </section>
     
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectName = urlParams.get("name") || "Project Title";
-        const projectNameZh = urlParams.get("name_zh") || "项目标题";
-        const projectDescription = urlParams.get("desc") || "Detailed description of the project goes here...";
-        const projectDescriptionZh = urlParams.get("desc_zh") || "项目的详细描述将在这里展示...";
-        const projectImage = urlParams.get("img") || "https://via.placeholder.com/800x400";
-
-        document.getElementById("project-title").textContent = projectName;
-        document.getElementById("project-title-zh").textContent = projectNameZh;
-        document.getElementById("project-description").textContent = projectDescription;
-        document.getElementById("project-description-zh").textContent = projectDescriptionZh;
-        document.getElementById("project-image").src = projectImage;
+        const projects = [
+            { name: "Customer Churn Prediction", img: "https://via.placeholder.com/400", link: "#" },
+            { name: "Stock Market Analysis", img: "https://via.placeholder.com/400", link: "#" },
+            { name: "Sentiment Analysis", img: "https://via.placeholder.com/400", link: "#" },
+            { name: "Fraud Detection", img: "https://via.placeholder.com/400", link: "#" }
+        ];
+        
+        const projectContainer = document.getElementById("projects");
+        projects.forEach(project => {
+            const projectCard = document.createElement("div");
+            projectCard.className = "bg-white rounded-lg shadow overflow-hidden";
+            projectCard.innerHTML = `
+                <img src="${project.img}" alt="${project.name}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">${project.name}</h3>
+                    <a href="${project.link}" class="text-blue-600 hover:underline">View Project</a>
+                </div>
+            `;
+            projectContainer.appendChild(projectCard);
+        });
     </script>
 </body>
 </html>
