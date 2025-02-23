@@ -23,12 +23,16 @@
         
         /* Sidebar Button (☰) in Header */
         .open-btn {
+            position: fixed;
+            left: 10px; /* Keeps it in the top-left */
+            top: 10px;
             font-size: 24px;
             padding: 10px;
             background: none;
             color: white;
             border: none;
             cursor: pointer;
+            z-index: 10000; /* Ensure it’s always on top */
         }
         
         /* Close Button */
@@ -185,7 +189,7 @@
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("active");
         }
-        
+                
         function toggleDropdown(event) {
             event.preventDefault();
             let submenu = event.target.nextElementSibling;
