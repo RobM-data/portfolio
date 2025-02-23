@@ -75,10 +75,15 @@
     <script>
         function toggleLanguage(lang) {
             document.querySelectorAll("[data-en]").forEach(el => {
-                el.style.display = lang === 'en' ? 'block' : 'none';
+                el.style.display = lang === 'en' ? 'inline' : 'none';
             });
             document.querySelectorAll("[data-zh]").forEach(el => {
-                el.style.display = lang === 'zh' ? 'block' : 'none';
+                el.style.display = lang === 'zh' ? 'inline' : 'none';
+            });
+        
+            // Ensure only the currently visible language is clickable
+            document.querySelectorAll("[data-toggle]").forEach(el => {
+                el.style.pointerEvents = el.style.display === "inline" ? "auto" : "none";
             });
         }
         
@@ -121,8 +126,8 @@
                     <a href="#" data-zh style="display:none;">关于</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" onclick="toggleDropdown(event)" data-en>Projects ▾</a>
-                    <a href="#" onclick="toggleDropdown(event)" data-zh style="display:none;">项目 ▾</a>
+                    href="#" onclick="toggleDropdown(event)" data-en data-toggle>Projects ▾</a>
+                    <a href="#" onclick="toggleDropdown(event)" data-zh data-toggle style="display:none;">项目 ▾</a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#" data-en>Crime in California</a>
