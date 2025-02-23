@@ -110,30 +110,44 @@
     </header>
 
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
-        <ul>
-            <li data-en><a href="#">Home</a></li>
-            <li data-zh style="display:none;"><a href="#">主页</a></li>
-            <li data-en><a href="#">About</a></li>
-            <li data-zh style="display:none;"><a href="#">关于</a></li>
-            <li class="dropdown">
-                <a href="#" onclick="toggleDropdown(event)" data-en>Projects ▾</a>
-                <a href="#" onclick="toggleDropdown(event)" data-zh style="display:none;">项目 ▾</a>
-                <ul class="dropdown-menu">
-                    <li data-en><a href="#">Crime in California</a></li>
-                    <li data-zh style="display:none;"><a href="#">加利福尼亚州犯罪</a></li>
-                    <li data-en><a href="#">Restaurant Recommender</a></li>
-                    <li data-zh style="display:none;"><a href="#">餐厅推荐系统</a></li>
-                    <li data-en><a href="#">Insurance Fraud Detection</a></li>
-                    <li data-zh style="display:none;"><a href="#">保险欺诈检测</a></li>
-                    <li data-en><a href="#">Causes of Suicide</a></li>
-                    <li data-zh style="display:none;"><a href="#">自杀原因分析</a></li>
-                </ul>
-            </li>
-            <li data-en><a href="#">Contact</a></li>
-            <li data-zh style="display:none;"><a href="#">联系</a></li>
-        </ul>
-    </div>
+        <div id="sidebar" class="sidebar">
+            <ul>
+                <li>
+                    <a href="#" data-en>Home</a>
+                    <a href="#" data-zh style="display:none;">主页</a>
+                </li>
+                <li>
+                    <a href="#" data-en>About</a>
+                    <a href="#" data-zh style="display:none;">关于</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" onclick="toggleDropdown(event)" data-en>Projects ▾</a>
+                    <a href="#" onclick="toggleDropdown(event)" data-zh style="display:none;">项目 ▾</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" data-en>Crime in California</a>
+                            <a href="#" data-zh style="display:none;">加利福尼亚州犯罪</a>
+                        </li>
+                        <li>
+                            <a href="#" data-en>Restaurant Recommender</a>
+                            <a href="#" data-zh style="display:none;">餐厅推荐系统</a>
+                        </li>
+                        <li>
+                            <a href="#" data-en>Insurance Fraud Detection</a>
+                            <a href="#" data-zh style="display:none;">保险欺诈检测</a>
+                        </li>
+                        <li>
+                            <a href="#" data-en>Causes of Suicide</a>
+                            <a href="#" data-zh style="display:none;">自杀原因分析</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-en>Contact</a>
+                    <a href="#" data-zh style="display:none;">联系</a>
+                </li>
+            </ul>
+        </div>
     
     <!-- Sidebar Toggle Button -->
     <button id="menu-btn" class="open-btn" onclick="toggleSidebar()">☰</button>
