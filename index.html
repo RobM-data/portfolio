@@ -18,15 +18,22 @@
         }
     
         .instagram-post {
-            min-width: 100%;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center; /* Centers content horizontally */
-            align-items: flex-start; /* Aligns posts to the top */
-            height: 100%; /* Ensure all posts have the same height */
-            transform: scale(0.7); /* Shrink the size slightly (85% of original) */
-            transition: transform 0.3s ease-in-out;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Force posts to start from the top */
+        height: 500px; /* Set a fixed height */
+        overflow: hidden; /* Prevent taller posts from affecting layout */
+        position: relative;
+    }
+    
+    /* Ensure Instagram embeds don't mess with sizing */
+    .instagram-media {
+        position: absolute !important;
+        top: 0 !important; /* Forces the embed to always start at the top */
+        left: 50%;
+        transform: translateX(-50%);
+        max-height: 100%;
+    }
     
         .instagram-post.active {
             transform: scale(0.8); /* Make the active post normal size */
@@ -191,7 +198,9 @@
                 }
             });
     
-            window.instgrm.Embeds.process(); // Ensures Instagram posts load properly
+            setTimeout(() => {
+                window.instgrm.Embeds.process();
+            }, 100); // Give Instagram 100ms to properly load
         }
     
         function nextPost() {
