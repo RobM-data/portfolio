@@ -25,7 +25,7 @@
         .open-btn {
             position: fixed;
             left: 10px; /* Keeps it in the top-left */
-            top: 10px;
+            top: 15px;
             font-size: 24px;
             padding: 10px;
             background: none;
@@ -194,13 +194,16 @@
             let sidebar = document.getElementById("sidebar");
             let menuButton = document.querySelector(".open-btn");
         
-            sidebar.classList.toggle("active");
-        
-            // Hide button when sidebar is open, show when closed
             if (sidebar.classList.contains("active")) {
-                menuButton.style.display = "none";
+                sidebar.classList.remove("active");
+        
+                // Wait for the sidebar transition (300ms) before showing the button
+                setTimeout(() => {
+                    menuButton.style.display = "block";
+                }, 300); 
             } else {
-                menuButton.style.display = "block";
+                menuButton.style.display = "none"; // Hide button immediately
+                sidebar.classList.add("active");
             }
         }
                 
