@@ -18,17 +18,15 @@
         }
     
         .instagram-post {
+            min-width: 100%;
+            flex-shrink: 0;
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Centers content horizontally */
             align-items: flex-start; /* Aligns posts to the top */
-            height: 500px; /* Adjust this height as needed */
-            overflow: hidden; /* Prevents larger posts from affecting layout */
+            height: 100%; /* Ensure all posts have the same height */
+            transform: scale(0.7); /* Shrink the size slightly (85% of original) */
+            transition: transform 0.3s ease-in-out;
         }
-        
-        .instagram-post blockquote {
-            max-height: 100%; /* Prevents Instagram embed from exceeding the container */
-        }
-    
     
         .instagram-post.active {
             transform: scale(0.8); /* Make the active post normal size */
@@ -193,11 +191,7 @@
                 }
             });
     
-            setTimeout(() => {
-                if (window.instgrm) {
-                    window.instgrm.Embeds.process();
-                }
-            }, 300); // Ensures Instagram embeds reload after a short delay
+            window.instgrm.Embeds.process(); // Ensures Instagram posts load properly
         }
     
         function nextPost() {
@@ -211,7 +205,6 @@
         }
     
         document.addEventListener("DOMContentLoaded", updateCarousel);
-        async src="https://www.instagram.com/embed.js">
     </script>
 </body>
 </html>
