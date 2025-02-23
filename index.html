@@ -26,7 +26,7 @@
             width: 250px; /* Set fixed width */
             transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
             opacity: 0.6;
-            transform: scale(0.8); /* Makes side posts smaller */
+            transform: scale(0.85); /* Makes side posts smaller */
             margin: 0 10px; /* Adds spacing between posts */
         }
     
@@ -185,9 +185,9 @@
     
         function updateCarousel() {
             posts.forEach((post, index) => {
-                let position = index - currentIndex; // Determines post position relative to center
+                let position = index - currentIndex; // Determines position relative to center
     
-                post.style.transform = `translateX(${position * 110}%) scale(${position === 0 ? 1 : 0.8})`;
+                post.style.transform = `translateX(${position * 300}px) scale(${position === 0 ? 1 : 0.85})`;
                 post.style.opacity = position === 0 ? "1" : "0.6";
                 post.classList.toggle("active", position === 0);
             });
