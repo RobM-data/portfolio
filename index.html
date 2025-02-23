@@ -29,7 +29,7 @@
             font-size: 24px;
             padding: 10px;
             background: none;
-            color: white;
+            color: black;
             border: none;
             cursor: pointer;
             z-index: 10000; /* Ensure it’s always on top */
@@ -55,6 +55,10 @@
         /* Language Buttons */
         header .mt-4 {
             text-align: center;
+        }
+
+        .sidebar.active + .open-btn {
+            display: none;
         }
     </style>
 
@@ -187,7 +191,17 @@
 
 
         function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("active");
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.querySelector(".open-btn");
+        
+            sidebar.classList.toggle("active");
+        
+            // Hide button when sidebar is open, show when closed
+            if (sidebar.classList.contains("active")) {
+                menuButton.style.display = "none";
+            } else {
+                menuButton.style.display = "block";
+            }
         }
                 
         function toggleDropdown(event) {
