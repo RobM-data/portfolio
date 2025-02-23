@@ -17,6 +17,8 @@
         .instagram-post {
             min-width: 100%;
             flex-shrink: 0;
+            display: flex;
+            justify-content: center;
         }
     
         /* Adjust arrow position */
@@ -26,23 +28,26 @@
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
             color: white;
-            padding: 10px 15px;
+            padding: 12px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-size: 20px;
+            z-index: 10; /* Ensure arrows stay above everything */
         }
     
         .carousel-arrow:hover {
             background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1); /* Slight zoom on hover */
         }
     
         .carousel-arrow.left {
-            left: -50px; /* Move left arrow further out */
+            left: 10px; /* Adjust if needed */
         }
     
         .carousel-arrow.right {
-            right: -50px; /* Move right arrow further out */
+            right: 10px; /* Adjust if needed */
         }
     </style>
     
@@ -166,7 +171,7 @@
         function updateCarousel() {
             const offset = -currentIndex * 100;
             carousel.style.transform = `translateX(${offset}%)`;
-            window.instgrm.Embeds.process(); // Ensure Instagram posts load properly
+            window.instgrm.Embeds.process(); // Ensures Instagram posts load properly
         }
     
         function nextPost() {
