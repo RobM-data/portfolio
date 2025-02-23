@@ -112,10 +112,13 @@
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li data-en><a href="#">Home</a></li>
+            <li data-zh style="display:none;"><a href="#">主页</a></li>
+            <li data-en><a href="#">About</a></li>
+            <li data-zh style="display:none;"><a href="#">关于</a></li>
             <li class="dropdown">
-                <a href="#" onclick="toggleDropdown(event)">Projects ▾</a>
+                <a href="#" onclick="toggleDropdown(event)" data-en>Projects ▾</a>
+                <a href="#" onclick="toggleDropdown(event)" data-zh style="display:none;">项目 ▾</a>
                 <ul class="dropdown-menu">
                     <li data-en><a href="#">Crime in California</a></li>
                     <li data-zh style="display:none;"><a href="#">加利福尼亚州犯罪</a></li>
@@ -127,7 +130,8 @@
                     <li data-zh style="display:none;"><a href="#">自杀原因分析</a></li>
                 </ul>
             </li>
-            <li><a href="#">Contact</a></li>
+            <li data-en><a href="#">Contact</a></li>
+            <li data-zh style="display:none;"><a href="#">联系</a></li>
         </ul>
     </div>
     
