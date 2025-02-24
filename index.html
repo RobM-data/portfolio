@@ -252,9 +252,9 @@
             event.preventDefault();
             alert("before if");
             if (currentLanguage === "zh") {
-                submenu = event.target.nextSibling;
+                submenu = event.target.nextElementSibling;
             } else {
-                submenu = event.target.nextSibling.nextSibling;
+                submenu = event.target.nextElementSibling.nextElementSibling;
             }
             alert("after if");
 
