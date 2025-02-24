@@ -81,10 +81,23 @@
                 el.style.display = lang === 'zh' ? 'inline' : 'none';
             });
         
-            // Ensure only the currently visible language is clickable
-            document.querySelectorAll("[data-toggle]").forEach(el => {
+            // Make sure only the correct language version is interactive
+            document.querySelectorAll(".dropdown a").forEach(el => {
                 el.style.pointerEvents = el.style.display === "inline" ? "auto" : "none";
             });
+        }
+        
+        function toggleDropdown(element) {
+            // Get the parent <li> (dropdown)
+            let parentLi = element.parentElement;
+            let submenu = parentLi.querySelector(".dropdown-menu");
+        
+            // Toggle dropdown visibility
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
         }
         
         function filterProjects() {
@@ -115,44 +128,45 @@
     </header>
 
     <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <ul>
-                <li>
-                    <a href="#" data-en>Home</a>
-                    <a href="#" data-zh style="display:none;">主页</a>
-                </li>
-                <li>
-                    <a href="#" data-en>About</a>
-                    <a href="#" data-zh style="display:none;">关于</a>
-                </li>
-                <li class="dropdown">
-                    href="#" onclick="toggleDropdown(event)" data-en data-toggle>Projects ▾</a>
-                    <a href="#" onclick="toggleDropdown(event)" data-zh data-toggle style="display:none;">项目 ▾</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#" data-en>Crime in California</a>
-                            <a href="#" data-zh style="display:none;">加利福尼亚州犯罪</a>
-                        </li>
-                        <li>
-                            <a href="#" data-en>Restaurant Recommender</a>
-                            <a href="#" data-zh style="display:none;">餐厅推荐系统</a>
-                        </li>
-                        <li>
-                            <a href="#" data-en>Insurance Fraud Detection</a>
-                            <a href="#" data-zh style="display:none;">保险欺诈检测</a>
-                        </li>
-                        <li>
-                            <a href="#" data-en>Causes of Suicide</a>
-                            <a href="#" data-zh style="display:none;">自杀原因分析</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" data-en>Contact</a>
-                    <a href="#" data-zh style="display:none;">联系</a>
-                </li>
-            </ul>
-        </div>
+    <div id="sidebar" class="sidebar">
+        <ul>
+            <li>
+                <a href="#" data-en>Home</a>
+                <a href="#" data-zh style="display:none;">主页</a>
+            </li>
+            <li>
+                <a href="#" data-en>About</a>
+                <a href="#" data-zh style="display:none;">关于</a>
+            </li>
+            <li class="dropdown">
+                <!-- Make sure both versions have the same `onclick` for toggling dropdown -->
+                <a href="#" onclick="toggleDropdown(this)" data-en>Projects ▾</a>
+                <a href="#" onclick="toggleDropdown(this)" data-zh style="display:none;">项目 ▾</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" data-en>Crime in California</a>
+                        <a href="#" data-zh style="display:none;">加利福尼亚州犯罪</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Restaurant Recommender</a>
+                        <a href="#" data-zh style="display:none;">餐厅推荐系统</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Insurance Fraud Detection</a>
+                        <a href="#" data-zh style="display:none;">保险欺诈检测</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Causes of Suicide</a>
+                        <a href="#" data-zh style="display:none;">自杀原因分析</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" data-en>Contact</a>
+                <a href="#" data-zh style="display:none;">联系</a>
+            </li>
+        </ul>
+    </div>
     
     <!-- Sidebar Toggle Button -->
     <button id="menu-btn" class="open-btn" onclick="toggleSidebar()">☰</button>
