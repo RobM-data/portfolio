@@ -108,8 +108,8 @@
             <h1 class="text-4xl font-bold flex-1 text-center" data-zh style="display:none;">欢迎来到我的数据科学作品集</h1>
         </div>
         <div class="mt-4 flex justify-center space-x-4">
-            <button onclick="toggleLanguage('en'); updateProjects('en');" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
-            <button onclick="toggleLanguage('zh'); updateProjects('zh');" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
+            <button onclick="toggleLanguage('en'); updateProjects('en');" class="lang-btn mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
+            <button onclick="toggleLanguage('zh'); updateProjects('zh');" class="lang-btn mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
         </div>
     </header>
 
@@ -268,13 +268,19 @@
 
         document.addEventListener("click", function(event) {
             let sidebar = document.getElementById("sidebar");
-            let menuButton = document.getElementById("menu-btn"); // If you have a hamburger button
+            let menuButton = document.getElementById("menu-btn");
         
             // Check if the sidebar is open
             if (sidebar.classList.contains("active")) {
-                // If the clicked element is NOT inside the sidebar or menu button, close the sidebar
-                if (!sidebar.contains(event.target) && (!menuButton || !menuButton.contains(event.target))) {
+                // If the clicked element is NOT inside the sidebar, menu button, or language buttons, close the sidebar
+                if (
+                    !sidebar.contains(event.target) && 
+                    !menuButton.contains(event.target) &&
+                    !event.target.classList.contains("lang-btn") // Prevent closing on language button click
+                ) {
                     sidebar.classList.remove("active");
+        
+                    // Reset the button color when sidebar closes
                     menuButton.style.color = "black";
                 }
             }
