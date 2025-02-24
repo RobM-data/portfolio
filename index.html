@@ -251,9 +251,9 @@
         function toggleDropdown(event) {
             event.preventDefault();
             if (currentLanguage === "zh") {
-                let submenu = event.target.nextElementSibling;
+                let submenu = event.target.nextSibling;
             } else {
-                let submenu = event.target.nextElementSibling.nextElementSibling;
+                let submenu = event.target.nextSibling.nextSibling;
             }
 
             window.alert(submenu);
