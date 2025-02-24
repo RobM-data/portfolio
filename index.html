@@ -74,6 +74,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function toggleLanguage(lang) {
+            // Show/hide the correct language
             document.querySelectorAll("[data-en]").forEach(el => {
                 el.style.display = lang === 'en' ? 'inline' : 'none';
             });
@@ -81,18 +82,20 @@
                 el.style.display = lang === 'zh' ? 'inline' : 'none';
             });
         
-            // Make sure only the correct language version is interactive
-            document.querySelectorAll(".dropdown a").forEach(el => {
+            // Ensure only the correct language dropdown toggle is interactive
+            document.querySelectorAll(".dropdown-toggle").forEach(el => {
                 el.style.pointerEvents = el.style.display === "inline" ? "auto" : "none";
             });
         }
         
         function toggleDropdown(element) {
-            // Get the parent <li> (dropdown)
-            let parentLi = element.parentElement;
+            // Find the parent dropdown container
+            let parentLi = element.closest(".dropdown");
+            
+            // Find the associated dropdown menu
             let submenu = parentLi.querySelector(".dropdown-menu");
         
-            // Toggle dropdown visibility
+            // Toggle the dropdown menu visibility
             if (submenu.style.display === "block") {
                 submenu.style.display = "none";
             } else {
@@ -139,10 +142,10 @@
                 <a href="#" data-zh style="display:none;">关于</a>
             </li>
             <li class="dropdown">
-                <!-- Make sure both versions have the same `onclick` for toggling dropdown -->
-                <a href="#" onclick="toggleDropdown(this)" data-en>Projects ▾</a>
-                <a href="#" onclick="toggleDropdown(this)" data-zh style="display:none;">项目 ▾</a>
-                <ul class="dropdown-menu">
+                <!-- The same onclick function for both languages -->
+                <a href="#" class="dropdown-toggle" onclick="toggleDropdown(this)" data-en>Projects ▾</a>
+                <a href="#" class="dropdown-toggle" onclick="toggleDropdown(this)" data-zh style="display:none;">项目 ▾</a>
+                <ul class="dropdown-menu" style="display: none;">
                     <li>
                         <a href="#" data-en>Crime in California</a>
                         <a href="#" data-zh style="display:none;">加利福尼亚州犯罪</a>
