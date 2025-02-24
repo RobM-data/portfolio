@@ -100,8 +100,12 @@
             // Find the associated dropdown menu
             let submenu = parentLi.querySelector(".dropdown-menu");
         
-            // Toggle the dropdown menu visibility
-            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            // Toggle visibility
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";  // Open dropdown
+            } else {
+                submenu.style.display = "none";  // Close dropdown
+            }
         }
         
         function filterProjects() {
