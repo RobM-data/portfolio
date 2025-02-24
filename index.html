@@ -73,7 +73,11 @@
     <title>My Data Science Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+
+        let currentLanguage = "en"
+        
         function toggleLanguage(lang) {
+            currentLanguage = lang
             document.querySelectorAll("[data-en]").forEach(el => {
                 el.style.display = lang === 'en' ? 'block' : 'none';
             });
@@ -246,7 +250,11 @@
                 
         function toggleDropdown(event) {
             event.preventDefault();
-            let submenu = event.target.nextElementSibling;
+            if (currentLanguage === "zh") {
+                let submenu = event.target.nextElementSibling;
+            } else {
+                let submenu = event.target.nextElementSibling.nextElementSibling;
+            }
             
             // Toggle display property
             if (submenu.style.display === "block") {
