@@ -264,6 +264,20 @@
                 submenu.style.display = "block";
             }
         }
+
+
+        document.addEventListener("click", function(event) {
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.getElementById("menu-btn"); // If you have a hamburger button
+        
+            // Check if the sidebar is open
+            if (sidebar.classList.contains("active")) {
+                // If the clicked element is NOT inside the sidebar or menu button, close the sidebar
+                if (!sidebar.contains(event.target) && (!menuButton || !menuButton.contains(event.target))) {
+                    sidebar.classList.remove("active");
+                }
+            }
+        });
     </script>
 </body>
 </html>
