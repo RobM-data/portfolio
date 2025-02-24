@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+    <style>
+        [data-en], [data-zh] {
+            display: block; /* Ensures elements appear on separate lines */
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 175px;
+            height: 100vh;
+            position: fixed;
+            left: -200px; /* Hidden by default */
+            top: 0;
+            background: #333;
+            color: white;
+            transition: left 0.3s ease-in-out;
+            z-index: 9999;
+            padding-top: 88px;
+            padding-left: 22px;
+        }
+        
+        /* Sidebar Open */
+        .sidebar.active {
+            left: 0;
+        }
+        
+        /* Hamburger Button */
+        .open-btn {
+            position: fixed;
+            left: 10px;
+            top: 18px;
+            font-size: 24px;
+            padding: 10px;
+            background: none; /* Default color when sidebar is closed */
+            color: black;
+            border: none;
+            cursor: pointer;
+            z-index: 10000; /* Ensures it stays on top */
+            transition: background 0.3s ease-in-out;
+        }
+        
+        /* Change Button Color When Sidebar is Open */
+        .sidebar.active + .open-btn {
+            background: none; /* Changes to white when sidebar is open */
+            color: white;
+        }
+
+        /* Hide sub-links by default */
+        .dropdown-menu {
+            display: none;
+            padding-left: 5px; /* Indent sub-links */
+        }
+
+        /* Style sub-links with a shorter white line */
+        .dropdown-menu li {
+            padding: 4px 0; /* Reduce gap between text and line */
+            border-bottom: 1px solid white; /* White line */
+            width: 70%; /* Make the line shorter than the full sidebar width */
+            margin: 0 auto; /* Center the line */
+            display: flex;
+            align-items: center;
+            line-height: 1.5;
+        }
+        
+        /* Remove the bottom border for the last sub-link */
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        currentLanguage = "en";
+        
+        function toggleLanguage(lang) {
+            currentLanguage = lang; // Store the language globally
+            localStorage.setItem("selectedLanguage", lang); // Save language choice
+        
+            document.querySelectorAll("[data-en]").forEach(el => {
+                el.style.visibility = lang === 'en' ? "visible" : "hidden";
+                el.style.display = lang === 'en' ? "block" : "none";
+            });
+        
+            document.querySelectorAll("[data-zh]").forEach(el => {
+                el.style.visibility = lang === 'zh' ? "visible" : "hidden";
+                el.style.display = lang === 'zh' ? "block" : "none";
+            });
+        
+            console.log("Current language is now:", currentLanguage);
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white py-6 text-center">
+        <div class="flex items-center justify-between">
+            <button class="open-btn" onclick="toggleSidebar()">☰</button>
+            <h1 class="text-4xl font-bold flex-1 text-center" data-en id="project-title">Project Title</h1>
+            <h1 class="text-4xl font-bold flex-1 text-center" data-zh id="project-title-zh" style="display:none;">项目标题</h1>
+        </div>
+        <div class="mt-4 flex justify-center space-x-4">
+            <button onclick="toggleLanguage('en')" class="lang-btn mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
+            <button onclick="toggleLanguage('zh')" class="lang-btn mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <ul>
+            <li>
+                <a href="https://robm-data.github.io/portfolio/#" data-en>Home</a>
+                <a href="https://robm-data.github.io/portfolio/#" data-zh style="display:none;">主页</a>
+            </li>
+            <li>
+                <a href="#" data-en>About</a>
+                <a href="#" data-zh style="display:none;">关于</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" onclick="toggleDropdown(event)" data-en>Projects ▾</a>
+                <a href="#" onclick="toggleDropdown(event)" data-zh style="display:none;">项目 ▾</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="https://robm-data.github.io/california-crime-analysis/index.html" data-en>Crime in California</a>
+                        <a href="https://robm-data.github.io/california-crime-analysis/index.html" data-zh style="display:none;">加利福尼亚州犯罪</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Restaurant Recommender</a>
+                        <a href="#" data-zh style="display:none;">餐厅推荐系统</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Insurance Fraud Detection</a>
+                        <a href="#" data-zh style="display:none;">保险欺诈检测</a>
+                    </li>
+                    <li>
+                        <a href="#" data-en>Causes of Suicide</a>
+                        <a href="#" data-zh style="display:none;">自杀原因分析</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" data-en>Contact</a>
+                <a href="#" data-zh style="display:none;">联系</a>
+            </li>
+        </ul>
+    </div>
+
+<!-- Sidebar Toggle Button -->
+<button id="menu-btn" class="open-btn" onclick="toggleSidebar()">☰</button>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <img id="project-image" src="https://via.placeholder.com/800x400" alt="Project Image" class="w-full rounded-lg shadow">
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Project Overview</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目概述</h2>
+        <p id="project-description" class="text-gray-700" data-en>Detailed description of the project goes here...</p>
+        <p id="project-description-zh" class="text-gray-700" data-zh style="display:none;">项目的详细描述将在这里展示...</p>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Technologies Used</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">使用的技术</h2>
+        <ul id="project-tech" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <li class="bg-white p-4 rounded-lg shadow">Python</li>
+            <li class="bg-white p-4 rounded-lg shadow">Machine Learning</li>
+        </ul>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Project Links</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目链接</h2>
+        <ul class="space-y-2">
+            <li><a id="data-collection-link" href="https://robm-data.github.io/california-crime-analysis/Data%20Cleaning.html" class="text-blue-600 hover:underline" data-en>Data Collection & Cleaning</a>
+                <a id="data-collection-link-zh" href="https://robm-data.github.io/california-crime-analysis/Data%20Cleaning.html" class="text-blue-600 hover:underline" data-zh style="display:none;">数据收集与清理</a></li>
+            <li><a id="eda-link" href="#" class="text-blue-600 hover:underline" data-en>Exploratory Data Analysis (EDA)</a>
+                <a id="eda-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">探索性数据分析（EDA）</a></li>
+            <li><a id="dashboard-link" href="#" class="text-blue-600 hover:underline" data-en>Dashboard & Visualizations</a>
+                <a id="dashboard-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">仪表板和可视化</a></li>
+        </ul>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6 text-center">
+        <a href="https://robm-data.github.io/portfolio/#" class="text-blue-600 hover:underline" data-en>Back to Portfolio</a>
+        <a href="https://robm-data.github.io/portfolio/#" class="text-blue-600 hover:underline" data-zh style="display:none;">返回作品集</a>
+    </section>
+
+    <footer class="bg-blue-600 text-white text-center py-4 mt-6">
+        <h2 class="text-lg font-semibold" data-en>Connect with Me</h2>
+        <h2 class="text-lg font-semibold" data-zh style="display:none;">联系我</h2>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="https://www.linkedin.com/in/rob-martin-62a942249/" target="_blank" class="text-blue-400 hover:underline">LinkedIn</a>
+            <a href="https://github.com/RobM-data" target="_blank" class="text-blue-400 hover:underline">GitHub</a>
+            <a href="#" class="text-blue-400 hover:underline">Twitter</a>
+        </div>
+    </footer>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectName = urlParams.get("name") || "Project Title";
+        const projectNameZh = urlParams.get("name_zh") || "项目标题";
+        const projectDescription = urlParams.get("desc") || "Detailed description of the project goes here...";
+        const projectDescriptionZh = urlParams.get("desc_zh") || "项目的详细描述将在这里展示...";
+        const projectImage = urlParams.get("img") || "https://via.placeholder.com/800x400";
+
+        document.getElementById("project-title").textContent = projectName;
+        document.getElementById("project-title-zh").textContent = projectNameZh;
+        document.getElementById("project-description").textContent = projectDescription;
+        document.getElementById("project-description-zh").textContent = projectDescriptionZh;
+        document.getElementById("project-image").src = projectImage;
+
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.getElementById("menu-btn");
+        
+            sidebar.classList.toggle("active");
+        
+            // Toggle button color based on sidebar state
+            if (sidebar.classList.contains("active")) {
+                menuButton.style.background = "none";
+                menuButton.style.color = "white";
+            } else {
+                menuButton.style.background = "none";
+                menuButton.style.color = "black";
+            }
+        }
+                
+        function toggleDropdown(event) {
+            event.preventDefault();
+
+            if (currentLanguage === "zh") {
+                submenu = event.target.nextElementSibling;
+            } else {
+                submenu = event.target.nextElementSibling.nextElementSibling;
+            }
+            
+            // Toggle display property
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
+        }
+
+
+        document.addEventListener("click", function(event) {
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.getElementById("menu-btn");
+        
+            // Check if the sidebar is open
+            if (sidebar.classList.contains("active")) {
+                // If the clicked element is NOT inside the sidebar, menu button, or language buttons, close the sidebar
+                if (
+                    !sidebar.contains(event.target) && 
+                    !menuButton.contains(event.target) &&
+                    !event.target.classList.contains("lang-btn") // Prevent closing on language button click
+                ) {
+                    sidebar.classList.remove("active");
+        
+                    // Reset the button color when sidebar closes
+                    menuButton.style.color = "black";
+                }
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+            currentLanguage = savedLanguage; // Restore the saved language
+            toggleLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
