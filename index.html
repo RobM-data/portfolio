@@ -77,12 +77,25 @@
         let currentLanguage = "en"
         
         function toggleLanguage(lang) {
-            currentLanguage = lang
+            // Store the selected language in LocalStorage
+            localStorage.setItem("selectedLanguage", lang);
+        
+            // Show/hide elements based on language
             document.querySelectorAll("[data-en]").forEach(el => {
-                el.style.display = lang === 'en' ? 'block' : 'none';
+                el.style.display = lang === 'en' ? 'inline' : 'none';
             });
             document.querySelectorAll("[data-zh]").forEach(el => {
-                el.style.display = lang === 'zh' ? 'block' : 'none';
+                el.style.display = lang === 'zh' ? 'inline' : 'none';
+            });
+        
+            // Ensure only the correct language version of "Projects ▾" is interactive
+            document.querySelectorAll(".dropdown-toggle").forEach(el => {
+                el.style.pointerEvents = el.style.display === "inline" ? "auto" : "none";
+            });
+        
+            // Close all dropdowns when switching languages
+            document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                menu.style.display = "none";
             });
         }
         
@@ -284,6 +297,14 @@
                     menuButton.style.color = "black";
                 }
             }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the saved language from LocalStorage (default to English if none)
+            let savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+        
+            // Apply the saved language
+            toggleLanguage(savedLanguage);
         });
     </script>
 </body>
