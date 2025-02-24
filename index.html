@@ -275,6 +275,7 @@
                 // If the clicked element is NOT inside the sidebar or menu button, close the sidebar
                 if (!sidebar.contains(event.target) && (!menuButton || !menuButton.contains(event.target))) {
                     sidebar.classList.remove("active");
+                    menuButton.style.color = "black";
                 }
             }
         });
