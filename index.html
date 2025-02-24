@@ -244,15 +244,18 @@
             }
         }
                 
-        function toggleDropdown(event) {
-            event.preventDefault();
-            let submenu = event.target.nextElementSibling;
-            
-            // Toggle display property
-            if (submenu.style.display === "block") {
-                submenu.style.display = "none";
+        function toggleDropdown(element) {
+            // Find the closest parent <li> with class "dropdown"
+            let parentDropdown = element.closest(".dropdown");
+        
+            // Explicitly find the dropdown menu inside that parent
+            let submenu = parentDropdown.querySelector(".dropdown-menu");
+        
+            // Toggle the dropdown visibility
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";  // Open dropdown
             } else {
-                submenu.style.display = "block";
+                submenu.style.display = "none";  // Close dropdown
             }
         }
     </script>
