@@ -250,8 +250,11 @@
                 
         function toggleDropdown(event) {
             event.preventDefault();
-            window.alert(currentLanguage);
-            let submenu = event.target.nextElementSibling;
+            if (currentLanguage === "zh") {
+                let submenu = event.target.nextElementSibling;
+            } else {
+                let submenu = event.target.nextElementSibling.nextElementSibling;
+            }
             
             // Toggle display property
             if (submenu.style.display === "block") {
