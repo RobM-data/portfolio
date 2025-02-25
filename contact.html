@@ -77,7 +77,7 @@
     <title>Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        currentLanguage = "en";
+        currentLanguage = localStorage.getItem("selectedLanguage");
         
         function toggleLanguage(lang) {
             currentLanguage = lang; // Store the language globally
