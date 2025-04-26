@@ -1,141 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Genesis from Molecules</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      overflow-x: hidden;
-    }
-
-    header {
-      background: linear-gradient(135deg, #4CAF50, #81C784);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      animation: fadeInDown 1s ease-out;
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 1.5s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    article h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    article p {
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    .highlight {
-      background-color: #e8f5e9;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Genesis from Molecules</h1>
-    <p>The story of creating life from the tiniest building blocks</p>
-  </header>
-
-  <div class="container">
-    <article>
-      <h2>Scientists Achieve Historic Breakthrough: Life Created from Scratch</h2>
-      <p><strong>By Jane Doe, Science Correspondent</strong></p>
-
-      <p>In a remarkable feat that blurs the line between science fiction and reality, researchers at the Genesis Project Laboratory announced today that they have successfully created living cells from individual molecules. This groundbreaking achievement marks the first time in history that life has been assembled synthetically, molecule by molecule, without the aid of pre-existing biological material.</p>
-
-      <p>The team, working in a high-security underground facility, meticulously pieced together proteins, lipids, and strands of nucleic acids, orchestrating a delicate dance of molecular interactions. "We have essentially rewritten the rulebook on life," said Dr. Evelyn Hart, lead biochemist on the project. "We didn't clone, we didn't modify — we built life from the ground up."</p>
-
-      <p>This synthetic approach draws inspiration from earlier milestones in the field. In 2010, Dr. Craig Venter and his team created the first synthetic bacterial genome, inserting it into a host cell to produce a new, self-replicating organism (<a href="https://www.theguardian.com/science/2010/may/20/craig-venter-synthetic-life-form" target="_blank">The Guardian</a>). Building upon such foundational work, the Genesis Project aimed to eliminate the need for a host cell altogether.</p>
-
-      <p>The research process took over four years, involving thousands of experiments to determine the precise environmental conditions needed for the molecules to self-organize into a living, self-replicating entity. Each attempt was a symphony of trial and error, with countless failures leading to a deeper understanding of the fundamental principles of biology.</p>
-
-      <p>"The final breakthrough came when we discovered a previously unknown catalyst that facilitated the rapid assembly of cellular membranes," explained Dr. Hart. "From there, we were able to inject a synthetic genome, carefully engineered from scratch, which kickstarted metabolic functions within the newly formed cell."</p>
-
-      <p>Experts worldwide are hailing the achievement as a monumental leap forward, with implications ranging from medicine and agriculture to space exploration. "Imagine growing crops on Mars with lifeforms custom-built for the environment," suggested Dr. Malik Chen, an astrobiologist at NASA. "The possibilities are endless."</p>
-
-      <p>However, the breakthrough also raises significant ethical and philosophical questions. "What does it mean to create life?" asked Dr. Sandra Klein, a bioethicist at Cambridge University. "We are entering an era where humans are not just caretakers of life, but its architects. Society must now grapple with the responsibilities that come with this new power."</p>
-
-      <p>As the world watches closely, the Genesis Project team is preparing for the next phase: developing multi-cellular organisms entirely from scratch. The first synthetic cell, a tiny shimmering sphere under a microscope, may one day be remembered as the first heartbeat in a new chapter of life on Earth.</p>
-    </article>
-  </div>
-
-  <footer>
-    &copy; 2025 Genesis Project. All rights reserved.
-  </footer>
-
-  <script>
-    // A little interactive sparkle (literally!)
-    document.addEventListener('click', function(e) {
-      const sparkle = document.createElement('div');
-      sparkle.textContent = '✨';
-      sparkle.style.position = 'absolute';
-      sparkle.style.left = `${e.pageX}px`;
-      sparkle.style.top = `${e.pageY}px`;
-      sparkle.style.pointerEvents = 'none';
-      sparkle.style.opacity = 1;
-      sparkle.style.fontSize = '1.5rem';
-      sparkle.style.transition = 'transform 1s ease, opacity 1s ease';
-      sparkle.style.transform = 'translateY(0)';
-      document.body.appendChild(sparkle);
-
-      setTimeout(() => {
-        sparkle.style.transform = 'translateY(-100px)';
-        sparkle.style.opacity = 0;
-      }, 10);
-
-      setTimeout(() => {
-        sparkle.remove();
-      }, 1000);
-    });
-  </script>
-</body>
-</html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Genesis from Molecules</title>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <style>
+     body {
+       margin: 0;
+       font-family: 'Roboto', sans-serif;
+       background-color: #f9f9f9;
+       color: #333;
+     }
+ 
+     header {
+       background-color: #4CAF50;
+       color: white;
+       padding: 2rem 1rem;
+       text-align: center;
+     }
+ 
+     header h1 {
+       margin: 0;
+       font-size: 2.5rem;
+     }
+ 
+     .container {
+       max-width: 800px;
+       margin: 2rem auto;
+       background: white;
+       padding: 2rem;
+       border-radius: 8px;
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     }
+ 
+     article h2 {
+       font-size: 2rem;
+       margin-bottom: 1rem;
+     }
+ 
+     article p {
+       line-height: 1.6;
+       margin-bottom: 1.5rem;
+     }
+ 
+     footer {
+       text-align: center;
+       padding: 1rem;
+       margin-top: 2rem;
+       font-size: 0.9rem;
+       color: #777;
+     }
+ 
+     .highlight {
+       background-color: #e8f5e9;
+       padding: 0.2rem 0.5rem;
+       border-radius: 4px;
+     }
+   </style>
+ </head>
+ <body>
+   <header>
+     <h1>Genesis from Molecules</h1>
+     <p>The story of creating life from the tiniest building blocks</p>
+   </header>
+ 
+   <div class="container">
+     <article>
+       <h2>Scientists Achieve Historic Breakthrough: Life Created from Scratch</h2>
+       <p><strong>By Jane Doe, Science Correspondent</strong></p>
+ 
+       <p>In a remarkable feat that blurs the line between science fiction and reality, researchers at the Genesis Project Laboratory announced today that they have successfully created living cells from individual molecules. This groundbreaking achievement marks the first time in history that life has been assembled synthetically, molecule by molecule, without the aid of pre-existing biological material.</p>
+ 
+       <p>The team, working in a high-security underground facility, meticulously pieced together proteins, lipids, and strands of nucleic acids, orchestrating a delicate dance of molecular interactions. "We have essentially rewritten the rulebook on life," said Dr. Evelyn Hart, lead biochemist on the project. "We didn't clone, we didn't modify — we built life from the ground up."</p>
+ 
+       <p>The research process took over four years, involving thousands of experiments to determine the precise environmental conditions needed for the molecules to self-organize into a living, self-replicating entity. Each attempt was a symphony of trial and error, with countless failures leading to a deeper understanding of the fundamental principles of biology.</p>
+ 
+       <p>"The final breakthrough came when we discovered a previously unknown catalyst that facilitated the rapid assembly of cellular membranes," explained Dr. Hart. "From there, we were able to inject a synthetic genome, carefully engineered from scratch, which kickstarted metabolic functions within the newly formed cell."</p>
+ 
+       <p>Experts worldwide are hailing the achievement as a monumental leap forward, with implications ranging from medicine and agriculture to space exploration. "Imagine growing crops on Mars with lifeforms custom-built for the environment," suggested Dr. Malik Chen, an astrobiologist at NASA. "The possibilities are endless."</p>
+ 
+       <p>However, the breakthrough also raises significant ethical and philosophical questions. "What does it mean to create life?" asked Dr. Sandra Klein, a bioethicist at Cambridge University. "We are entering an era where humans are not just caretakers of life, but its architects. Society must now grapple with the responsibilities that come with this new power."</p>
+ 
+       <p>As the world watches closely, the Genesis Project team is preparing for the next phase: developing multi-cellular organisms entirely from scratch. The first synthetic cell, a tiny shimmering sphere under a microscope, may one day be remembered as the first heartbeat in a new chapter of life on Earth.</p>
+     </article>
+   </div>
+ 
+   <footer>
+     &copy; 2025 Genesis Project. All rights reserved.
+   </footer>
+ 
+   <script>
+     // A little interactive sparkle (literally!)
+     document.addEventListener('click', function(e) {
+       const sparkle = document.createElement('div');
+       sparkle.textContent = '✨';
+       sparkle.style.position = 'absolute';
+       sparkle.style.left = `${e.pageX}px`;
+       sparkle.style.top = `${e.pageY}px`;
+       sparkle.style.pointerEvents = 'none';
+       sparkle.style.opacity = 1;
+       document.body.appendChild(sparkle);
+ 
+       let fade = setInterval(() => {
+         sparkle.style.opacity -= 0.02;
+         if (sparkle.style.opacity <= 0) {
+           clearInterval(fade);
+           sparkle.remove();
+         }
+       }, 10);
+     });
+   </script>
+ </body>
+ </html>
